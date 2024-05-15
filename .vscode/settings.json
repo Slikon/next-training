@@ -11,6 +11,7 @@
   "prettier.singleQuote": false,
   "prettier.jsxSingleQuote": false,
   "prettier.trailingComma": "es5",
+  "prettier.printWidth": 80,
   "prettier.arrowParens": "always",
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
