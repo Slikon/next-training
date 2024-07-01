@@ -3,6 +3,7 @@
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -31,9 +32,13 @@ const Filter = ({ filters, otherClasses, containerClasses }: Props) => {
           </div>
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="light">Light</SelectItem>
-          <SelectItem value="dark">Dark</SelectItem>
-          <SelectItem value="system">System</SelectItem>
+          <SelectGroup>
+            {filters.map((filter) => (
+              <SelectItem key={filter.value} value={filter.value}>
+                {filter.name}
+              </SelectItem>
+            ))}
+          </SelectGroup>
         </SelectContent>
       </Select>
     </div>
