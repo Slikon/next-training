@@ -1,5 +1,6 @@
 import HomeFilters from "@/components/home/HomeFilters";
 import Filter from "@/components/shared/Filter";
+import NoResult from "@/components/shared/NoResult";
 import QuestionCard from "@/components/shared/QuestionCard";
 import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
 import { Button } from "@/components/ui/button";
@@ -9,26 +10,26 @@ import React from "react";
 
 const Home = () => {
   const mockQuestions = [
-    {
-      id: 1,
-      title: "How to create a new project in React?",
-      tags: ["react", "javascript"],
-      authorName: "John Doe",
-      age: 249,
-      votesCount: 15,
-      answersCount: 5,
-      viewsCount: 100,
-    },
-    {
-      id: 2,
-      title: "How to create a new project in Angular?",
-      tags: ["angular", "javascript"],
-      authorName: "Jane Doe",
-      age: 249,
-      votesCount: 15,
-      answersCount: 5,
-      viewsCount: 100,
-    },
+    // {
+    //   _id: 1,
+    //   title: "How to create a new project in React?",
+    //   tags: ["react", "javascript"],
+    //   authorName: "John Doe",
+    //   createdAt: "2021-09-01T00:00:00.000Z",
+    //   votesCount: 15,
+    //   answersCount: 5,
+    //   viewsCount: 100,
+    // },
+    // {
+    //   _id: 2,
+    //   title: "How to create a new project in Angular?",
+    //   tags: ["angular", "javascript"],
+    //   authorName: "Jane Doe",
+    //   createdAt: "2021-09-01T00:00:00.000Z",
+    //   votesCount: 15,
+    //   answersCount: 5,
+    //   viewsCount: 100,
+    // },
   ];
 
   return (
@@ -58,10 +59,21 @@ const Home = () => {
 
       <HomeFilters />
 
-      <div className="mt-11 flex flex-col gap-10">
-        {mockQuestions.map((question) => (
-          <QuestionCard key={question.id} {...question} />
-        ))}
+      <div className="mt-10 flex w-full flex-col gap-6">
+        {mockQuestions.length > 0 ? (
+          mockQuestions.map((question) => (
+            <QuestionCard key={question._id} {...question} />
+          ))
+        ) : (
+          <NoResult
+            title="There's no questions to show"
+            description="Be the first to break the silence! 🚀 Ask a Question and kickstart the
+        discussion. our query could be the next big thing others learn from. Get
+        involved! 💡"
+            link="/ask-question"
+            linkTitle="Ask a Question"
+          />
+        )}
       </div>
     </>
   );

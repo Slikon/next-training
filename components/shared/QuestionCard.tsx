@@ -4,28 +4,28 @@ import Link from "next/link";
 import Image from "next/image";
 
 type QuestionCardProps = {
-  id: number;
+  _id: number;
   title: string;
   tags: string[];
   authorName: string;
-  age: number;
+  createdAt: string;
   votesCount: number;
   answersCount: number;
   viewsCount: number;
 };
 
 const QuestionCard = ({
-  id,
+  _id,
   title,
   tags,
   authorName,
-  age,
+  createdAt,
   votesCount,
   answersCount,
   viewsCount,
 }: QuestionCardProps) => {
   return (
-    <div className="background-light900_dark200 rounded-lg px-10 py-9">
+    <div className="background-light900_dark200 rounded-lg px-10 py-9 shadow-light-400">
       <Link href={""} className="h3-bold text-dark200_light900 line-clamp-1">
         {title}
       </Link>
@@ -48,7 +48,9 @@ const QuestionCard = ({
             height={15}
           />
           <span className="ml-2">{authorName}</span>
-          <span className="small-regular ml-1">• asked {age} days ago</span>
+          <span className="small-regular ml-1">
+            • asked {createdAt} days ago
+          </span>
         </span>
 
         <div className="small-regular text-dark200_light900 flex flex-row gap-3">
