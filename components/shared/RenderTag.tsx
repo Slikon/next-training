@@ -2,14 +2,19 @@ import Link from "next/link";
 import React from "react";
 import { Badge } from "@/components/ui/badge";
 
-type IProps = {
+type RenderTagProps = {
   _id: number;
   name: string;
-  totalQuestiions: number;
-  showCount: boolean;
+  totalQuestiions?: number;
+  showCount?: boolean;
 };
 
-const RenderTag = ({ _id, name, totalQuestiions, showCount }: IProps) => {
+const RenderTag = ({
+  _id,
+  name,
+  totalQuestiions,
+  showCount,
+}: RenderTagProps) => {
   return (
     <Link
       href={`/tags/${_id}`}

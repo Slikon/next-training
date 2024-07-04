@@ -1,7 +1,7 @@
 import HomeFilters from "@/components/home/HomeFilters";
 import Filter from "@/components/shared/Filter";
 import NoResult from "@/components/shared/NoResult";
-import QuestionCard from "@/components/shared/QuestionCard";
+import QuestionCard from "@/components/cards/QuestionCard";
 import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
 import { Button } from "@/components/ui/button";
 import { HomePageFilters } from "@/constants/filters";
@@ -10,26 +10,34 @@ import React from "react";
 
 const Home = () => {
   const mockQuestions = [
-    // {
-    //   _id: 1,
-    //   title: "How to create a new project in React?",
-    //   tags: ["react", "javascript"],
-    //   authorName: "John Doe",
-    //   createdAt: "2021-09-01T00:00:00.000Z",
-    //   votesCount: 15,
-    //   answersCount: 5,
-    //   viewsCount: 100,
-    // },
-    // {
-    //   _id: 2,
-    //   title: "How to create a new project in Angular?",
-    //   tags: ["angular", "javascript"],
-    //   authorName: "Jane Doe",
-    //   createdAt: "2021-09-01T00:00:00.000Z",
-    //   votesCount: 15,
-    //   answersCount: 5,
-    //   viewsCount: 100,
-    // },
+    {
+      _id: 1,
+      title: "How to create a new project in React?",
+      tags: ["react", "javascript"],
+      author: {
+        _id: 1,
+        name: "John Doe",
+        picture: "/assets/images/user.png",
+      },
+      createdAt: new Date("2021-09-01T10:00:00Z"),
+      upvotes: 151231,
+      answers: [],
+      views: 10012132,
+    },
+    {
+      _id: 2,
+      title: "How to create a new project in Angular?",
+      tags: ["angular", "javascript"],
+      author: {
+        _id: 2,
+        name: "Johanna Doe",
+        picture: "/assets/images/user.png",
+      },
+      createdAt: new Date("2023-09-01T10:00:00Z"),
+      upvotes: 15,
+      answers: [],
+      views: 131231231231223232,
+    },
   ];
 
   return (
@@ -62,7 +70,17 @@ const Home = () => {
       <div className="mt-10 flex w-full flex-col gap-6">
         {mockQuestions.length > 0 ? (
           mockQuestions.map((question) => (
-            <QuestionCard key={question._id} {...question} />
+            <QuestionCard
+              key={question._id}
+              _id={question._id}
+              title={question.title}
+              tags={question.tags}
+              author={question.author}
+              createdAt={question.createdAt}
+              upvotes={question.upvotes}
+              answers={question.answers}
+              views={question.views}
+            />
           ))
         ) : (
           <NoResult
