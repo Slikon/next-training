@@ -60,7 +60,7 @@ const QuestionCard = ({
           href={`/profile/${author._id}`}
           textStyles="body-medium text-dark400_light800"
         />
-        <div className="flex flex-row gap-8">
+        <div className="flex flex-row gap-3">
           <Metric
             imgUrl="/assets/icons/like.svg"
             alt="Upvotes"
