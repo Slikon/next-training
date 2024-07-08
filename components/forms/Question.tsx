@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { QuestionsSchema } from "@/lib/validations";
+import EditorComponent from "../EditorComponent";
 
 const Question = () => {
   const form = useForm<z.infer<typeof QuestionsSchema>>({
@@ -74,6 +75,7 @@ const Question = () => {
               </FormLabel>
               <FormControl className="mt-3.5">
                 {/** TODO: Add an editor */}
+                <EditorComponent />
               </FormControl>
               <FormDescription className="body-regular mt-3 text-light-500">
                 Describe your problem in detail. The more information you
