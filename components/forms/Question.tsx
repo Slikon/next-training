@@ -18,15 +18,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { QuestionsSchema } from "@/lib/validations";
-import EditorComponent from "../EditorComponent";
 
 const Question = () => {
   const editorRef = useRef(null);
-  // const log = () => {
-  //   if (editorRef.current) {
-  //     console.log(editorRef.current.getContent());
-  //   }
-  // };
 
   const form = useForm<z.infer<typeof QuestionsSchema>>({
     resolver: zodResolver(QuestionsSchema),
@@ -83,12 +77,13 @@ const Question = () => {
               </FormLabel>
               <FormControl className="mt-3.5">
                 <Editor
-                  // tinymceScriptSrc="/tinymce/tinymce.min.js"
                   licenseKey="your-license-key"
+                  apiKey={process.env.NEXT_PUBLIC_TINY_EDITOR_API_KEY}
+                  // @ts-ignore
                   onInit={(_evt, editor) => (editorRef.current = editor)}
                   initialValue="<p>This is the initial content of the editor.</p>"
                   init={{
-                    height: 500,
+                    height: 350,
                     menubar: false,
                     plugins: [
                       "advlist",
@@ -100,22 +95,18 @@ const Question = () => {
                       "anchor",
                       "searchreplace",
                       "visualblocks",
-                      "code",
+                      "codesample",
                       "fullscreen",
                       "insertdatetime",
                       "media",
                       "table",
                       "preview",
-                      "help",
-                      "wordcount",
                     ],
                     toolbar:
                       "undo redo | blocks | " +
-                      "bold italic forecolor | alignleft aligncenter " +
-                      "alignright alignjustify | bullist numlist outdent indent | " +
-                      "removeformat | help",
-                    content_style:
-                      "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+                      "codesample | bold italic forecolor | alignleft aligncenter | " +
+                      "alignright alignjustify | bullist numlist",
+                    content_style: "body { font-family:Inter; font-size:16px }",
                   }}
                 />
               </FormControl>
